@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class Controls : MonoBehaviour
@@ -7,17 +6,14 @@ public class Controls : MonoBehaviour
     public float Sensivity;
     public Transform LeftCorner;
     public Transform RightCorner;
-
-    //public Vector3 Force;
-
-    private Rigidbody _rigidbody;
-
-    private void Awake()
-    {
-        _rigidbody = GetComponent<Rigidbody>();
-    }
+    public float DownSpeed;
+    public static float FallSpeed;
 
     private Vector3 _previousMousePosition;
+    private void Start()
+    {
+        FallSpeed = DownSpeed;
+    }
 
     void Update()
     {
