@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class DownMove : MonoBehaviour
 {
-    //public float FallSpeed;
-
     private Vector3 motion;
 
     private void Start()
