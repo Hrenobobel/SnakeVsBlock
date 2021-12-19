@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public class DownMove : MonoBehaviour
+public class MoveUp : MonoBehaviour
 {
+    public float Speed;
     private Vector3 motion;
 
     private void Start()
     {
-        motion = new Vector3(0, - Controls.FallSpeed, 0);
+        motion = new Vector3(0, Speed, 0);
     }
 
     void Update()

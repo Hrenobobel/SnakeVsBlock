@@ -1,8 +1,9 @@
+using TMPro;
 using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-    public TextMesh Text;
+    public TextMeshPro ValueText;
     public int Value;
     public int minValue;
     public int maxValue;
@@ -13,7 +14,7 @@ public class Block : MonoBehaviour
     private void Awake()
     {
         Value = Random.Range(minValue, maxValue);
-        Text.text = Value.ToString();
+        ValueText.text = Value.ToString();
 
         rend = GetComponent<Renderer>();
         rend.material.SetFloat("_Key", (float)Value);
@@ -25,7 +26,7 @@ public class Block : MonoBehaviour
     {
         if (lastValue == Value) return;
 
-        Text.text = Value.ToString();
+        ValueText.text = Value.ToString();
         rend.material.SetFloat("_Key", (float)Value);
 
         lastValue = Value;
