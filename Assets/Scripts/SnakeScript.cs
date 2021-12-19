@@ -44,9 +44,9 @@ public class SnakeScript : MonoBehaviour
     }
     public void LengthDown()
     {
-        Destroy(snakeUnit[0].gameObject);
-        snakeUnit.RemoveAt(0);
-        unitsPosition.RemoveAt(1);
+        Destroy(snakeUnit[snakeUnit.Count - 1].gameObject);
+        snakeUnit.RemoveAt(snakeUnit.Count - 1);
+        unitsPosition.RemoveAt(unitsPosition.Count - 1);
     }
 
 }

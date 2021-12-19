@@ -5,14 +5,19 @@ public class Player : MonoBehaviour
 {
     public int Length = 5;
     public TextMeshPro LengthText;
+    public MoveUp moveUp;
+    public Controls controls;
+    public Game game;
 
     private SnakeScript SnakeScript;
+    private int lastLength;
 
     void Start()
     {
         LengthText.SetText(Length.ToString());
-
+        lastLength = Length;
         SnakeScript = GetComponent<SnakeScript>();
+        controls = GetComponent <Controls>();
 
         for (int i = 0; i < Length; i++)
             SnakeScript.LengthUp();
@@ -20,6 +25,10 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (lastLength == Length) return;
+
+        LengthText.SetText(Length.ToString());
+
         if (Input.GetKeyDown(KeyCode.A))
         {
             Length++;
@@ -39,5 +48,31 @@ public class Player : MonoBehaviour
         LengthText.SetText(Length.ToString());
         for (int i = 0; i < number; i++)
             SnakeScript.LengthUp();
+    }
+    public void LiveDown()
+    {
+        Length--;
+        LengthText.SetText(Length.ToString());
+        SnakeScript.LengthDown();
+    }
+
+    public void Block()
+    {
+        if (Length == 0)
+        {
+            this.gameObject.SetActive(false);
+            controls.enabled = false;
+        }
+        moveUp.Stop();
+        LiveDown();
+    }
+    public void Stop()
+    {
+        moveUp.Stop();
+    }
+
+    public void Play()
+    {
+        moveUp.Play();
     }
 }

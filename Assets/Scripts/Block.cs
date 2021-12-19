@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class Block : MonoBehaviour
     public int Value;
     public int minValue;
     public int maxValue;
+    private Player player;
 
     private Renderer rend;
     private int lastValue;
@@ -14,21 +16,39 @@ public class Block : MonoBehaviour
     private void Awake()
     {
         Value = Random.Range(minValue, maxValue);
-        ValueText.text = Value.ToString();
-
         rend = GetComponent<Renderer>();
-        rend.material.SetFloat("_Key", (float)Value);
 
-        lastValue = Value;
+        UpdateValue();
     }
 
-    private void Update()
+    private void UpdateValue()
     {
-        if (lastValue == Value) return;
-
         ValueText.text = Value.ToString();
         rend.material.SetFloat("_Key", (float)Value);
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!collision.collider.TryGetComponent(out Player player)) return;
+
+        player.Stop();
         lastValue = Value;
+        StartCoroutine(Wait(player));
+    }
+    
+    private IEnumerator Wait(Player player)
+    {
+        int i = lastValue;
+        while (i > 0)
+        {
+            Value --;
+            UpdateValue();
+            player.Block();
+            yield return new WaitForSeconds(0.1f);
+            i--;
+        }
+        this.gameObject.SetActive(false);
+        player.Play();        
+        Destroy(this.gameObject);
     }
 }
