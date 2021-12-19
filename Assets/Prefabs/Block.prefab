@@ -112,7 +112,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &969774576229718341
 MonoBehaviour:
@@ -129,7 +129,8 @@ MonoBehaviour:
   ValueText: {fileID: 3690655081471843530}
   Value: 11
   minValue: 1
-  maxValue: 20
+  maxValue: 10
+  player: {fileID: 0}
 --- !u!1 &716027190952095949
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +229,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 15
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

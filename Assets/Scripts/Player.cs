@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
 {
     public int Length = 5;
     public TextMeshPro LengthText;
+    public MoveUp moveUp;
 
     private SnakeScript SnakeScript;
 
@@ -39,5 +40,22 @@ public class Player : MonoBehaviour
         LengthText.SetText(Length.ToString());
         for (int i = 0; i < number; i++)
             SnakeScript.LengthUp();
+    }
+    public void LiveDown()
+    {
+        Length--;
+        LengthText.SetText(Length.ToString());
+        SnakeScript.LengthDown();
+    }
+
+    public void Stop()
+    {
+        moveUp.Stop();
+        Debug.Log("STOP");
+    }
+
+    public void Play()
+    {
+        moveUp.Play();
     }
 }
