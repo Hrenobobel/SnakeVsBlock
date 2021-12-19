@@ -8,7 +8,7 @@ public class Block : MonoBehaviour
     public int Value;
     public int minValue;
     public int maxValue;
-    public Player player;
+    private Player player;
 
     private Renderer rend;
     private int lastValue;
@@ -31,20 +31,24 @@ public class Block : MonoBehaviour
     {
         if (!collision.collider.TryGetComponent(out Player player)) return;
 
+        player.Stop();
         lastValue = Value;
-        for (int i = 0; i < lastValue; i++)
-        {
-            player.Block();
-            StartCoroutine(Wait());
-        }
-        //player.Play();
+        StartCoroutine(Wait(player));
     }
-
-    private IEnumerator Wait()
+    
+    private IEnumerator Wait(Player player)
     {
-        Value --;
-        UpdateValue();
-        Debug.Log("2 seconds");
-        yield return new WaitForSeconds(1f);
+        int i = lastValue;
+        while (i > 0)
+        {
+            Value --;
+            UpdateValue();
+            player.Block();
+            yield return new WaitForSeconds(0.1f);
+            i--;
+        }
+        this.gameObject.SetActive(false);
+        player.Play();        
+        Destroy(this.gameObject);
     }
 }

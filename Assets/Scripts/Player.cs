@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
     public int Length = 5;
     public TextMeshPro LengthText;
     public MoveUp moveUp;
+    public Controls controls;
+    public Game game;
 
     private SnakeScript SnakeScript;
     private int lastLength;
@@ -15,6 +17,7 @@ public class Player : MonoBehaviour
         LengthText.SetText(Length.ToString());
         lastLength = Length;
         SnakeScript = GetComponent<SnakeScript>();
+        controls = GetComponent <Controls>();
 
         for (int i = 0; i < Length; i++)
             SnakeScript.LengthUp();
@@ -55,10 +58,17 @@ public class Player : MonoBehaviour
 
     public void Block()
     {
+        if (Length == 0)
+        {
+            this.gameObject.SetActive(false);
+            controls.enabled = false;
+        }
         moveUp.Stop();
         LiveDown();
-        if (Length < 0)
-            Debug.Log("Game Over");
+    }
+    public void Stop()
+    {
+        moveUp.Stop();
     }
 
     public void Play()
