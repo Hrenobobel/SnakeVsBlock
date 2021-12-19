@@ -33,4 +33,11 @@ public class Player : MonoBehaviour
             SnakeScript.LengthDown();
         }
     }
+    public void LivesUp(int number)
+    {
+        Length += number;
+        LengthText.SetText(Length.ToString());
+        for (int i = 0; i < number; i++)
+            SnakeScript.LengthUp();
+    }
 }
