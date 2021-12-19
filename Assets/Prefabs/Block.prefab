@@ -130,7 +130,6 @@ MonoBehaviour:
   Value: 0
   minValue: 1
   maxValue: 20
-  player: {fileID: 0}
 --- !u!1 &716027190952095949
 GameObject:
   m_ObjectHideFlags: 0
