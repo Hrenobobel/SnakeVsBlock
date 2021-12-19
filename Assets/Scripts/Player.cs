@@ -8,11 +8,12 @@ public class Player : MonoBehaviour
     public MoveUp moveUp;
 
     private SnakeScript SnakeScript;
+    private int lastLength;
 
     void Start()
     {
         LengthText.SetText(Length.ToString());
-
+        lastLength = Length;
         SnakeScript = GetComponent<SnakeScript>();
 
         for (int i = 0; i < Length; i++)
@@ -21,6 +22,10 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (lastLength == Length) return;
+
+        LengthText.SetText(Length.ToString());
+
         if (Input.GetKeyDown(KeyCode.A))
         {
             Length++;
@@ -48,10 +53,12 @@ public class Player : MonoBehaviour
         SnakeScript.LengthDown();
     }
 
-    public void Stop()
+    public void Block()
     {
         moveUp.Stop();
-        Debug.Log("STOP");
+        LiveDown();
+        if (Length < 0)
+            Debug.Log("Game Over");
     }
 
     public void Play()

@@ -16,43 +16,35 @@ public class Block : MonoBehaviour
     private void Awake()
     {
         Value = Random.Range(minValue, maxValue);
-        ValueText.text = Value.ToString();
-
         rend = GetComponent<Renderer>();
-        rend.material.SetFloat("_Key", (float)Value);
 
-        lastValue = Value;
+        UpdateValue();
     }
 
-    private void Update()
+    private void UpdateValue()
     {
-        if (lastValue == Value) return;
-
         ValueText.text = Value.ToString();
         rend.material.SetFloat("_Key", (float)Value);
-
-        lastValue = Value;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.collider.TryGetComponent(out Player player)) return;
 
-        player.Stop();
-
         lastValue = Value;
         for (int i = 0; i < lastValue; i++)
         {
-            StartCoroutine(Wait(player));
+            player.Block();
+            StartCoroutine(Wait());
         }
         //player.Play();
     }
 
-    private IEnumerator Wait(Player player)
+    private IEnumerator Wait()
     {
-        Value--;
-        player.LiveDown();
-        yield return new WaitForSeconds(1);
-        
+        Value --;
+        UpdateValue();
+        Debug.Log("2 seconds");
+        yield return new WaitForSeconds(1f);
     }
 }
