@@ -14,8 +14,8 @@ public class Player : MonoBehaviour
 
         SnakeScript = GetComponent<SnakeScript>();
 
-        /*for (int i = 0; i < Length; i++)
-            SnakeScript.LengthUp();*/
+        for (int i = 0; i < Length; i++)
+            SnakeScript.LengthUp();
     }
 
     void Update()

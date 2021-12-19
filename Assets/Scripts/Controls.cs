@@ -4,17 +4,18 @@ public class Controls : MonoBehaviour
 {
     public Transform Player;
     public float Sensivity;
-    public Transform LeftCorner;
-    public Transform RightCorner;
-    public float DownSpeed;
-    public static float FallSpeed;
+    public Transform LeftCornerTransform;
+    public Transform RightCornerTransform;
 
     private Vector3 _previousMousePosition;
-    private void Start()
-    {
-        FallSpeed = DownSpeed;
-    }
+    private float LeftCorner;
+    private float RightCorner;
 
+    private void Awake()
+    {
+        LeftCorner = LeftCornerTransform.transform.position.x;
+        RightCorner = RightCornerTransform.transform.position.x;
+    }
     void Update()
     {
         if (Input.GetMouseButton(0))
@@ -24,10 +25,10 @@ public class Controls : MonoBehaviour
 
             Player.transform.position += motion * Sensivity;
 
-            if (Player.transform.position.x < LeftCorner.transform.position.x)
-                Player.transform.position = new Vector3(LeftCorner.transform.position.x, 0f, 0f);
-            if (Player.transform.position.x > RightCorner.transform.position.x)
-                Player.transform.position = new Vector3(RightCorner.transform.position.x, 0f, 0f);
+            if (Player.transform.position.x < LeftCorner)
+                Player.transform.position = new Vector3(LeftCorner, Player.transform.position.y, Player.transform.position.z);
+            if (Player.transform.position.x > RightCorner)
+                Player.transform.position = new Vector3(RightCorner, Player.transform.position.y, Player.transform.position.z);
         }
         _previousMousePosition = Input.mousePosition;
     }
