@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
     {
         Length += number;
         LengthText.SetText(Length.ToString());
-        for (int i = 0; i < Length; i++)
+        for (int i = 0; i < number; i++)
             SnakeScript.LengthUp();
     }
 }

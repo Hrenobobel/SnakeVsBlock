@@ -299,4 +299,4 @@ MonoBehaviour:
   ValueText: {fileID: 303110204571334404}
   Value: 5
   minValue: 1
-  maxValue: 10
+  maxValue: 5

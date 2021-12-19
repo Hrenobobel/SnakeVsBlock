@@ -18,6 +18,8 @@ public class BonusLives : MonoBehaviour
         if (other.TryGetComponent(out Player player))
         {
             player.LivesUp(Value);
+            this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
         }
     }
 }
