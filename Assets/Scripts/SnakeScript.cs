@@ -21,21 +21,21 @@ public class SnakeScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (SnakeElementList.Count == 1) return;
 
         for (int i = 1; i < SnakeElementList.Count; i++)
         {
+
             _currentBodyPart = SnakeElementList[i].transform.position;
             _previousBodyPart = SnakeElementList[i - 1].transform.position;
 
             _distance = Vector3.Distance(_previousBodyPart, _currentBodyPart);
-
+            
             if (_distance > UnitDiameter)
             {
                 Vector3 delta = _previousBodyPart - _currentBodyPart;
                 Vector3 motion = new Vector3(delta.x, delta.y, 0f);
 
-                RigidBodyList[i - 1].AddForce(motion.normalized * Power, ForceMode.Acceleration);
+                SnakeElementList[i].transform.Translate(motion.normalized* (_distance - UnitDiameter) * Power * Time.fixedDeltaTime);
             }
         }
     }

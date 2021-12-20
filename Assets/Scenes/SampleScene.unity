@@ -580,6 +580,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260073495}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &300256294 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 303110205712768950, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
+  m_PrefabInstance: {fileID: 1331884337}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &300256295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300256294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e1018ff1766f854e9fbab979decb95b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: -0.1
 --- !u!1 &301347010
 GameObject:
   m_ObjectHideFlags: 0
@@ -2000,7 +2018,6 @@ GameObject:
   - component: {fileID: 737002911}
   - component: {fileID: 737002910}
   - component: {fileID: 737002909}
-  - component: {fileID: 737002908}
   m_Layer: 0
   m_Name: Player(Head)
   m_TagString: Untagged
@@ -2101,19 +2118,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 124
   m_CollisionDetection: 0
---- !u!114 &737002908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 737002902}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e1018ff1766f854e9fbab979decb95b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 0.1
 --- !u!114 &737002909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2128,7 +2132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Length: 0
   LengthText: {fileID: 1743187236}
-  moveUp: {fileID: 737002908}
+  moveUp: {fileID: 0}
   controls: {fileID: 737002911}
   game: {fileID: 1172536642}
 --- !u!114 &737002910
@@ -2145,8 +2149,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Head: {fileID: 737002902}
   Unit: {fileID: 930937369836356938, guid: de4aeff817b1e6241995dd40e4e895ed, type: 3}
-  UnitDiameter: 1.1
-  Power: 15
+  UnitDiameter: 0.7
+  Power: 22
 --- !u!114 &737002911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2327,6 +2331,24 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &886444163 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 303110205712768950, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
+  m_PrefabInstance: {fileID: 1887951937}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &886444169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886444163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e1018ff1766f854e9fbab979decb95b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: -0.1
 --- !u!1 &894659693
 GameObject:
   m_ObjectHideFlags: 0
@@ -2588,6 +2610,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 737002903}
+--- !u!1 &1004325544 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 303110205712768950, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
+  m_PrefabInstance: {fileID: 1499031935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1004325550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004325544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e1018ff1766f854e9fbab979decb95b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: -0.1
 --- !u!1 &1079890869
 GameObject:
   m_ObjectHideFlags: 0
@@ -3053,7 +3093,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 303110205712768950, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 303110205712768951, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
       propertyPath: m_RootOrder
@@ -3155,7 +3195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 303110205712768950, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 303110205712768951, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
       propertyPath: m_RootOrder
@@ -3521,13 +3561,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1834183556}
+  - component: {fileID: 1834183557}
   m_Layer: 0
   m_Name: BlockBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1834183556
 Transform:
   m_ObjectHideFlags: 0
@@ -3536,7 +3577,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834183555}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 15, z: 0}
+  m_LocalPosition: {x: 0, y: 50, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 894659694}
@@ -3547,6 +3588,19 @@ Transform:
   m_Father: {fileID: 1172536641}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1834183557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834183555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e1018ff1766f854e9fbab979decb95b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: -0.1
 --- !u!1001 &1887951937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3564,7 +3618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 303110205712768950, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 303110205712768951, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
       propertyPath: m_RootOrder
