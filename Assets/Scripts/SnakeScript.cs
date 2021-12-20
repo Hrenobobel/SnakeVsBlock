@@ -34,7 +34,7 @@ public class SnakeScript : MonoBehaviour
                 Vector3 delta = _previousBodyPart - _currentBodyPart;
                 Vector3 motion = new Vector3(delta.x, delta.y, 0f);
 
-                RigidBodyList[i].AddForce(motion * Power, ForceMode.Impulse);
+                RigidBodyList[i].AddForce(motion * Power, ForceMode.Force);
             }
         }
     }
