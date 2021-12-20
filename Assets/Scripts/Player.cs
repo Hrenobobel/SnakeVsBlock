@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int Length = 5;
+    public int Length;
     public TextMeshPro LengthText;
     public MoveUp moveUp;
     public Controls controls;
@@ -20,27 +20,31 @@ public class Player : MonoBehaviour
         controls = GetComponent <Controls>();
 
         for (int i = 0; i < Length; i++)
-            SnakeScript.LengthUp();
+        {
+            LiveUp();
+        }
     }
-
+    
     void Update()
     {
-        if (lastLength == Length) return;
+        //if (lastLength == Length) return;
 
-        LengthText.SetText(Length.ToString());
+        //LengthText.SetText(Length.ToString());
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Length++;
-            LengthText.SetText(Length.ToString());
-            SnakeScript.LengthUp();
+            LiveUp();
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            Length--;
-            LengthText.SetText(Length.ToString());
-            SnakeScript.LengthDown();
+            LiveDown();
         }
+    }
+    public void LiveUp()
+    {
+        Length ++;
+        LengthText.SetText(Length.ToString());
+        SnakeScript.LengthUp();
     }
     public void LivesUp(int number)
     {

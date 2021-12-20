@@ -3,50 +3,52 @@ using UnityEngine;
 
 public class SnakeScript : MonoBehaviour
 {
-    public Transform Head;
-    public Transform Unit;
+    public GameObject Head;
+    public GameObject Unit;
     public float UnitDiameter;
 
-    private List<Transform> snakeUnit = new List<Transform>();
-    private List<Vector3> unitsPosition = new List<Vector3>();
-    
+    private List<GameObject> SnakeElementList = new List<GameObject>();
+    private List<Rigidbody> RigidBodyList = new List<Rigidbody>();
+    private Vector3 _previousBodyPart;
+    private Vector3 _currentBodyPart;
+    private float _distance;
+    public float Power;
+
     private void Awake()
     {
-        unitsPosition.Add(Head.position);
+        SnakeElementList.Add(Head);
+        RigidBodyList.Add(Head.gameObject.GetComponent<Rigidbody>());
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        float offset = ((Vector3)Head.position - unitsPosition[0]).magnitude;
-
-        if (offset > UnitDiameter)
+        for (int i = 1; i < SnakeElementList.Count - 1; i++)
         {
-            Vector3 direction = ((Vector3)Head.position - unitsPosition[0]).normalized;
+            _currentBodyPart = SnakeElementList[i].transform.position;
+            _previousBodyPart = SnakeElementList[i - 1].transform.position;
 
-            unitsPosition.Insert(0, unitsPosition[0] + direction * UnitDiameter);
-            unitsPosition.RemoveAt(unitsPosition.Count - 1);
+            _distance = Vector3.Distance(_previousBodyPart, _currentBodyPart);
 
-            offset -= UnitDiameter;
-        }
+            if (_distance > UnitDiameter)
+            {
+                Vector3 delta = _previousBodyPart - _currentBodyPart;
+                Vector3 motion = new Vector3(delta.x, delta.y, 0f);
 
-        for (int i = 0; i < snakeUnit.Count; i++)
-        {
-            snakeUnit[i].position = Vector3.Lerp(unitsPosition[i + 1], unitsPosition[i], offset / UnitDiameter);
+                RigidBodyList[i].AddForce(motion * Power, ForceMode.Impulse);
+            }
         }
     }
 
     public void LengthUp()
     {
-        Vector3 position = new Vector3((unitsPosition[unitsPosition.Count - 1]).x, (unitsPosition[unitsPosition.Count - 1]).y - UnitDiameter, (unitsPosition[unitsPosition.Count - 1]).z);
-        Transform NewUnit = Instantiate(Unit, position, Quaternion.identity, transform);
-        snakeUnit.Add(NewUnit);
-        unitsPosition.Add(NewUnit.position);
+        Vector3 position = new Vector3((SnakeElementList[SnakeElementList.Count - 1]).transform.position.x, (SnakeElementList[SnakeElementList.Count - 1]).transform.position.y - 0.9f, 0f);
+        GameObject NewUnit = Instantiate(Unit, position, Quaternion.identity, transform);
+        SnakeElementList.Add(NewUnit);
+        RigidBodyList.Add(NewUnit.gameObject.GetComponent<Rigidbody>());
     }
     public void LengthDown()
     {
-        Destroy(snakeUnit[snakeUnit.Count - 1].gameObject);
-        snakeUnit.RemoveAt(snakeUnit.Count - 1);
-        unitsPosition.RemoveAt(unitsPosition.Count - 1);
+        Destroy(SnakeElementList[SnakeElementList.Count - 1].gameObject);
+        SnakeElementList.RemoveAt(SnakeElementList.Count - 1);
     }
-
 }

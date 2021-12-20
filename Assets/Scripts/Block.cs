@@ -26,6 +26,7 @@ public class Block : MonoBehaviour
         ValueText.text = Value.ToString();
         rend.material.SetFloat("_Key", (float)Value);
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.TryGetComponent(out Player player)) return;
