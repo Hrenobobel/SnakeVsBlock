@@ -24,17 +24,17 @@ public class Controls : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Vector3 delta = Input.mousePosition - _previousMousePosition;
-            Vector3 motion = new Vector3 (delta.x, delta.y, 0f);
+            Vector3 motion = new Vector3 (delta.x, 0f, 0f);
 
-            _rigidbody.AddForce(motion * Sensivity, ForceMode.Impulse);
+            _rigidbody.AddForce(motion * Sensivity, ForceMode.Acceleration);
         }
         _previousMousePosition = Input.mousePosition;
     }
     private void Update()
     {
         if (Player.transform.position.x < LeftCorner)
-            Player.transform.position = new Vector3(LeftCorner, Player.transform.position.y, Player.transform.position.z);
+            Player.transform.position = new Vector3(LeftCorner, 0f, 0f);
         if (Player.transform.position.x > RightCorner)
-            Player.transform.position = new Vector3(RightCorner, Player.transform.position.y, Player.transform.position.z);        
+            Player.transform.position = new Vector3(RightCorner, 0f, 0f);        
     }
 }

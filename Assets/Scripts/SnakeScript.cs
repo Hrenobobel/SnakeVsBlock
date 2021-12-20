@@ -17,12 +17,13 @@ public class SnakeScript : MonoBehaviour
     private void Awake()
     {
         SnakeElementList.Add(Head);
-        RigidBodyList.Add(Head.gameObject.GetComponent<Rigidbody>());
     }
 
     private void FixedUpdate()
     {
-        for (int i = 1; i < SnakeElementList.Count - 1; i++)
+        if (SnakeElementList.Count == 1) return;
+
+        for (int i = 1; i < SnakeElementList.Count; i++)
         {
             _currentBodyPart = SnakeElementList[i].transform.position;
             _previousBodyPart = SnakeElementList[i - 1].transform.position;
@@ -34,7 +35,7 @@ public class SnakeScript : MonoBehaviour
                 Vector3 delta = _previousBodyPart - _currentBodyPart;
                 Vector3 motion = new Vector3(delta.x, delta.y, 0f);
 
-                RigidBodyList[i].AddForce(motion * Power, ForceMode.Force);
+                RigidBodyList[i - 1].AddForce(motion.normalized * Power, ForceMode.Acceleration);
             }
         }
     }
@@ -50,5 +51,6 @@ public class SnakeScript : MonoBehaviour
     {
         Destroy(SnakeElementList[SnakeElementList.Count - 1].gameObject);
         SnakeElementList.RemoveAt(SnakeElementList.Count - 1);
+        RigidBodyList.RemoveAt(RigidBodyList.Count - 1);
     }
 }
