@@ -38,11 +38,12 @@ public class Block : MonoBehaviour
         {
             if (player.transform.position.x > center.transform.position.x)
                 player.transform.position = new Vector3(right.transform.position.x, player.transform.position.y, player.transform.position.z);
-            else //if (player.transform.position.x < center.transform.position.x)
+            else if (player.transform.position.x < center.transform.position.x)
                 player.transform.position = new Vector3(left.transform.position.x, player.transform.position.y, player.transform.position.z);
         }
         else
         {
+            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.1f, player.transform.position.z);
             player.Stop();
             lastValue = Value;
             StartCoroutine(Wait(player));
@@ -51,17 +52,16 @@ public class Block : MonoBehaviour
 
     private IEnumerator Wait(Player player)
     {
-        int i = lastValue;
-        while (i > 0)
+        Value --;
+        player.Block();
+        UpdateValue();
+        yield return new WaitForSeconds(0.1f);
+        
+        if (Value == 0)
         {
-            Value --;
-            UpdateValue();
-            player.Block();
-            yield return new WaitForSeconds(0.1f);
-            i--;
+            this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
         }
-        this.gameObject.SetActive(false);
-        player.Play();        
-        Destroy(this.gameObject);
+        player.Play();
     }
 }

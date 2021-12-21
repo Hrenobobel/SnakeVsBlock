@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
         {
             this.gameObject.SetActive(false);
             controls.enabled = false;
+            return;
         }
         moveUp.Stop();
         LiveDown();
