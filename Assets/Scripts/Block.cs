@@ -8,8 +8,12 @@ public class Block : MonoBehaviour
     public int Value;
     public int minValue;
     public int maxValue;
-    private Player player;
+    public Transform bottom;
+    public Transform center;
+    public Transform right;
+    public Transform left;
 
+    private Player player;
     private Renderer rend;
     private int lastValue;
 
@@ -30,11 +34,21 @@ public class Block : MonoBehaviour
     {
         if (!other.TryGetComponent(out Player player)) return;
 
-        player.Stop();
-        lastValue = Value;
-        StartCoroutine(Wait(player));
+        if (player.transform.position.y > bottom.transform.position.y)
+        {
+            if (player.transform.position.x > center.transform.position.x)
+                player.transform.position = new Vector3(right.transform.position.x, player.transform.position.y, player.transform.position.z);
+            else //if (player.transform.position.x < center.transform.position.x)
+                player.transform.position = new Vector3(left.transform.position.x, player.transform.position.y, player.transform.position.z);
+        }
+        else
+        {
+            player.Stop();
+            lastValue = Value;
+            StartCoroutine(Wait(player));
+        }
     }
-    
+
     private IEnumerator Wait(Player player)
     {
         int i = lastValue;

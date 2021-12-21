@@ -22,7 +22,7 @@ public class Controls : MonoBehaviour
         {
             Vector3 delta = Input.mousePosition - _previousMousePosition;
             Vector3 motion = new Vector3 (delta.x, 0f, 0f);
-
+            
             Player.transform.position += motion * Sensivity;
 
             if (Player.transform.position.x < LeftCorner)
