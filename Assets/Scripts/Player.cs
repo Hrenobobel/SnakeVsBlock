@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public MoveUp moveUp;
     public Controls controls;
     public Game game;
+    public GameObject LiveDownParticle;
 
     private SnakeScript SnakeScript;
     private int lastLength;
@@ -70,6 +71,8 @@ public class Player : MonoBehaviour
     public void Stop()
     {
         moveUp.Stop();
+        Debug.Log("part");
+        Instantiate(LiveDownParticle, transform);
     }
 
     public void Play()
