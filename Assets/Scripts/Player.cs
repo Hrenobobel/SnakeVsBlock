@@ -71,7 +71,6 @@ public class Player : MonoBehaviour
     public void Stop()
     {
         moveUp.Stop();
-        Debug.Log("part");
         Instantiate(LiveDownParticle, transform);
     }
 

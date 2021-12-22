@@ -6,7 +6,7 @@ public class Controls : MonoBehaviour
     public float Sensivity;
     public Transform LeftCornerTransform;
     public Transform RightCornerTransform;
-
+    
     private Vector3 _previousMousePosition;
     private float LeftCorner;
     private float RightCorner;
@@ -21,9 +21,13 @@ public class Controls : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Vector3 delta = Input.mousePosition - _previousMousePosition;
-            Vector3 motion = new Vector3 (delta.x, 0f, 0f);
-            
-            Player.transform.position += motion * Sensivity;
+            Vector3 motion = new Vector3 (delta.x, 0f, 0f) * Sensivity;
+            if (motion.magnitude > 1f)
+            {
+                motion = motion.normalized;
+            }
+
+            Player.transform.position += motion ;
 
             if (Player.transform.position.x < LeftCorner)
                 Player.transform.position = new Vector3(LeftCorner, Player.transform.position.y, Player.transform.position.z);

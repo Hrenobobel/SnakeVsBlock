@@ -43,8 +43,8 @@ public class Block : MonoBehaviour
         }
         else
         {
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.1f, player.transform.position.z);
             player.Stop();
+            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.2f, player.transform.position.z);
             lastValue = Value;
             StartCoroutine(Wait(player));
         }
