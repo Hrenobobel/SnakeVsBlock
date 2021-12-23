@@ -1,11 +1,10 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 
 public class Block : MonoBehaviour
 {
     public TextMeshPro ValueText;
-    public int Value;
+    public int BlockValue;
     public int minValue;
     public int maxValue;
     public Transform bottom;
@@ -13,13 +12,11 @@ public class Block : MonoBehaviour
     public Transform right;
     public Transform left;
 
-    private Player player;
     private Renderer rend;
-    private int lastValue;
 
     private void Awake()
     {
-        Value = Random.Range(minValue, maxValue);
+        BlockValue = Random.Range(minValue, maxValue);
         rend = GetComponent<Renderer>();
 
         UpdateValue();
@@ -27,8 +24,8 @@ public class Block : MonoBehaviour
 
     private void UpdateValue()
     {
-        ValueText.text = Value.ToString();
-        rend.material.SetFloat("_Key", (float)Value);
+        ValueText.text = BlockValue.ToString();
+        rend.material.SetFloat("_Key", (float)BlockValue);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -44,24 +41,24 @@ public class Block : MonoBehaviour
         else
         {
             player.Stop();
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.2f, player.transform.position.z);
-            lastValue = Value;
-            StartCoroutine(Wait(player));
+            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.5f, player.transform.position.z);
+            MinusBlockValue(player);
         }
     }
-
-    private IEnumerator Wait(Player player)
+    private void MinusBlockValue(Player player)
     {
-        Value --;
         player.Block();
-        UpdateValue();
-        yield return new WaitForSeconds(0.1f);
-        
-        if (Value == 0)
+
+        BlockValue--;
+
+        if (BlockValue == 0)
         {
-            this.gameObject.SetActive(false);
+            //this.gameObject.SetActive(false);
             Destroy(this.gameObject);
         }
-        player.Play();
+        UpdateValue();
+
+        if (player.PlayerLength >= 0)
+            player.Play();
     }
 }

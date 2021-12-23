@@ -1,73 +1,60 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int Length = 5;
+    public int PlayerLength;
     public TextMeshPro LengthText;
     public MoveUp moveUp;
-    public Controls controls;
     public Game game;
     public GameObject LiveDownParticle;
+    public AudioSource PlayerAudio;
+    public AudioClip LoseAudio;
+    public AudioClip LivesAudio;
 
     private SnakeScript SnakeScript;
     private int lastLength;
 
     void Start()
     {
-        LengthText.SetText(Length.ToString());
-        lastLength = Length;
         SnakeScript = GetComponent<SnakeScript>();
-        controls = GetComponent <Controls>();
-
-        for (int i = 0; i < Length; i++)
+        UpdateLengthText();
+        for (int i = 0; i < PlayerLength; i++)
             SnakeScript.LengthUp();
     }
 
-    void Update()
+    private void UpdateLengthText()
     {
-        if (lastLength == Length) return;
-
-        LengthText.SetText(Length.ToString());
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Length++;
-            LengthText.SetText(Length.ToString());
-            SnakeScript.LengthUp();
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            Length--;
-            LengthText.SetText(Length.ToString());
-            SnakeScript.LengthDown();
-        }
+        LengthText.SetText(PlayerLength.ToString());
     }
+
     public void LivesUp(int number)
     {
-        Length += number;
-        LengthText.SetText(Length.ToString());
+        PlayerAudio.PlayOneShot(LivesAudio, 0.5f);
+        PlayerLength += number;
+        UpdateLengthText();
         for (int i = 0; i < number; i++)
             SnakeScript.LengthUp();
     }
     public void LiveDown()
     {
-        Length--;
-        LengthText.SetText(Length.ToString());
+        PlayerAudio.Play();
+        UpdateLengthText();
         SnakeScript.LengthDown();
     }
 
     public void Block()
     {
-        if (Length == 0)
+        PlayerLength--;
+        if (PlayerLength < 0)
         {
-            this.gameObject.SetActive(false);
-            controls.enabled = false;
-            return;
+            PlayerAudio.PlayOneShot(LoseAudio, 0.25f);
+            game.OnPlayerDie();
         }
-        moveUp.Stop();
-        LiveDown();
+        else LiveDown();
     }
+
     public void Stop()
     {
         moveUp.Stop();
