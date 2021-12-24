@@ -14,7 +14,7 @@ public class MoveUp : MonoBehaviour
 
     private void Update()
     {
-        transform.position += motion;
+        transform.position += motion * Time.deltaTime;
     }
 
     public void Stop()
