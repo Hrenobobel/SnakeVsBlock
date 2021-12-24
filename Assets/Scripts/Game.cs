@@ -29,6 +29,8 @@ public class Game : MonoBehaviour
     {
         Controls.enabled = false;
         LevelIndex++;
+        if (LevelIndex > 3)
+            LevelIndex = 0;
         WinMenu.SetActive(true);
     }
     public int LevelIndex
