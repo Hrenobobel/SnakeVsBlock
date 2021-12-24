@@ -14,10 +14,15 @@ public class LevelGenerator : MonoBehaviour
     public float RightBorder;
     public Game Game;
 
+    private float _LevelDistance;
+
     private void Awake()
     {
         int LevelIndex = Game.LevelIndex;
         Random random = new Random(LevelIndex);
+
+        _LevelDistance = DistanceBetweenElements - LevelIndex * DistanceBetweenElements/10;
+
         int BlockBoxCount = RandomRange(random, MinBlockBoxNumber, MaxBlockBoxNumber);
 
         for (int i = 0; i < BlockBoxCount; i++)
@@ -30,9 +35,10 @@ public class LevelGenerator : MonoBehaviour
             GameObject Bonus = Instantiate(BonusLive, transform);
             Bonus.transform.position = CalculateBonusPosition(i, random);
         }
-        //FinishPlatform.localPosition = CalculateBlockBoxPosition(BlockBoxCount);
-        //CylinderRoot.localScale = new Vector3(1, BlockBoxCount * DistanceBetweenElements + CylinderRoot.localPosition.y, 1);
+        GameObject Finish = Instantiate(FinishObject, transform);
+        Finish.transform.position = CalculateBlockBoxPosition(BlockBoxCount);
     }
+
     private int RandomRange(Random random, int min, int maxExlusive)
     {
         int number = random.Next();
@@ -40,7 +46,6 @@ public class LevelGenerator : MonoBehaviour
         number %= length;
         return min + number;
     }
-
     private float RandomRange(Random random, float min, float maxExlusive)
     {
         float t = (float)random.NextDouble();
@@ -49,12 +54,12 @@ public class LevelGenerator : MonoBehaviour
 
     private Vector3 CalculateBlockBoxPosition(int BlockBoxIndex)
     {
-        return new Vector3(0, FirstElementDistance + DistanceBetweenElements * BlockBoxIndex, 0);
+        return new Vector3(0, FirstElementDistance + _LevelDistance * BlockBoxIndex, 0);
     }
     private Vector3 CalculateBonusPosition(int BlockBoxIndex, Random random)
     {
         float BonusX = RandomRange(random, LeftBorder, RightBorder);
-        float BonusY = FirstElementDistance + DistanceBetweenElements * BlockBoxIndex + DistanceBetweenElements / 2;
+        float BonusY = FirstElementDistance + _LevelDistance * BlockBoxIndex + _LevelDistance / 2;
         return new Vector3(BonusX, BonusY, 0);
     }
 }
