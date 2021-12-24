@@ -6,6 +6,8 @@ public class Game : MonoBehaviour
     public GameObject StartMenu;
     public GameObject WinMenu;
     public GameObject LoseMenu;
+    public GameObject GameUI;
+    public int MaxLevel;
 
     public enum State
     {
@@ -18,7 +20,7 @@ public class Game : MonoBehaviour
     public void OnPlayerStart()
     {
         StartMenu.SetActive(false);
-        Controls.enabled = true;
+        GameUI.SetActive(true);
     }
     public void OnPlayerDie()
     {
@@ -29,6 +31,8 @@ public class Game : MonoBehaviour
     {
         Controls.enabled = false;
         LevelIndex++;
+        if (LevelIndex > MaxLevel-1)
+            LevelIndex = 0;
         WinMenu.SetActive(true);
     }
     public int LevelIndex

@@ -21,7 +21,7 @@ public class Controls : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Vector3 delta = Input.mousePosition - _previousMousePosition;
-            Vector3 motion = new Vector3 (delta.x, 0f, 0f) * Sensivity;
+            Vector3 motion = new Vector3 (delta.x, 0f, 0f) * Sensivity * Time.deltaTime;
             if (motion.magnitude > 1f)
             {
                 motion = motion.normalized;

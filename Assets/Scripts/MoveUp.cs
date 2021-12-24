@@ -3,6 +3,7 @@ using UnityEngine;
 public class MoveUp : MonoBehaviour
 {
     public float Speed;
+    public Game game;
 
     private Vector3 motion;
 
@@ -10,7 +11,7 @@ public class MoveUp : MonoBehaviour
     {
         motion = new Vector3(0, Speed, 0);
     }
-    
+
     private void Update()
     {
         transform.position += motion;

@@ -1,4 +1,3 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -12,9 +11,9 @@ public class Player : MonoBehaviour
     public AudioSource PlayerAudio;
     public AudioClip LoseAudio;
     public AudioClip LivesAudio;
+    public AudioClip WinAudio;
 
     private SnakeScript SnakeScript;
-    private int lastLength;
 
     void Start()
     {
@@ -64,5 +63,12 @@ public class Player : MonoBehaviour
     public void Play()
     {
         moveUp.Play();
+    }
+
+    public void ReachedFinish()
+    {
+        PlayerAudio.PlayOneShot(WinAudio, 0.5f);
+        moveUp.Stop();
+        game.OnPlayerWin();
     }
 }
