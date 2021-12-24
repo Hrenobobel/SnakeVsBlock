@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 1ecf11cbae2b4394aa07a3eecd5a0609, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -700,7 +700,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1376
+  m_Name: pb_Mesh-36990
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1403,7 +1403,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1202
+  m_Name: pb_Mesh-36816
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1800,7 +1800,7 @@ Transform:
   m_Children:
   - {fileID: 1743187235}
   - {fileID: 1926041930}
-  m_Father: {fileID: 1425943067}
+  m_Father: {fileID: 1172536641}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &737002904
@@ -2031,7 +2031,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1280
+  m_Name: pb_Mesh-36894
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2789,6 +2789,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 737002903}
   - {fileID: 1425943067}
   - {fileID: 1834183556}
   - {fileID: 2113330434}
@@ -2892,11 +2893,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 303110205712768950, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 303110205712768951, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 303110205712768951, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2996,13 +2997,41 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1425943067}
+  - component: {fileID: 1425943066}
   m_Layer: 0
-  m_Name: MovingObjects
+  m_Name: Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1425943066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425943065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 483554a1e75b35647acfcecfa16275a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BlockBoxPrefabs:
+  - {fileID: 968279116221821392, guid: c8212f77c314ece41a42500245d77c3d, type: 3}
+  - {fileID: 5355641147404688796, guid: 5504d3b794a92774e96afa70de9ce8d1, type: 3}
+  - {fileID: 1606098874712072074, guid: 9be66cd0b8b1d50498c3abc7b48d247d, type: 3}
+  - {fileID: 3813417971212022001, guid: 1757a685ee306af4389f0eb7584927a5, type: 3}
+  - {fileID: 7169346997246469225, guid: e8ce1b82945beac478a8949e6265ffb3, type: 3}
+  FinishObject: {fileID: 7000468220433368896, guid: 507b42269abe23a4e92b5b64f5cdb355, type: 3}
+  BonusLive: {fileID: 303110205712768950, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
+  MinBlockBoxNumber: 3
+  MaxBlockBoxNumber: 7
+  FirstElementDistance: 50
+  DistanceBetweenElements: 20
+  LeftBorder: -5
+  RightBorder: 8
+  Game: {fileID: 1172536642}
 --- !u!4 &1425943067
 Transform:
   m_ObjectHideFlags: 0
@@ -3014,10 +3043,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 737002903}
   - {fileID: 1547203158}
   m_Father: {fileID: 1172536641}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1499031935
 PrefabInstance:
@@ -3032,11 +3060,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 303110205712768950, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 303110205712768951, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 303110205712768951, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3219,7 +3247,7 @@ Transform:
   - {fileID: 33503394}
   - {fileID: 301347011}
   m_Father: {fileID: 1425943067}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1547203159
 MonoBehaviour:
@@ -3475,7 +3503,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1338
+  m_Name: pb_Mesh-36952
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3774,7 +3802,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1834183556
 Transform:
   m_ObjectHideFlags: 0
@@ -3792,7 +3820,7 @@ Transform:
   - {fileID: 445340294}
   - {fileID: 1986350058}
   m_Father: {fileID: 1172536641}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1866531870
 GameObject:
@@ -3886,11 +3914,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 303110205712768950, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 303110205712768951, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 303110205712768951, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
       propertyPath: m_LocalPosition.x
