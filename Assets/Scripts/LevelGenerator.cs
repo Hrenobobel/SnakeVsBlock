@@ -7,11 +7,11 @@ public class LevelGenerator : MonoBehaviour
     public GameObject FinishObject;
     public GameObject BonusLive;
     public int MinBlockBoxNumber;
-    public int MaxBlockBoxNumber;
     public float FirstElementDistance;
     public float DistanceBetweenElements;
     public float LeftBorder;
     public float RightBorder;
+    public float LevelDistanseReduce;
     public Game Game;
 
     private float _LevelDistance;
@@ -21,9 +21,9 @@ public class LevelGenerator : MonoBehaviour
         int LevelIndex = Game.LevelIndex;
         Random random = new Random(LevelIndex);
 
-        _LevelDistance = DistanceBetweenElements - LevelIndex * DistanceBetweenElements/10;
+        _LevelDistance = DistanceBetweenElements - LevelIndex * LevelDistanseReduce;
 
-        int BlockBoxCount = RandomRange(random, MinBlockBoxNumber, MaxBlockBoxNumber);
+        int BlockBoxCount = MinBlockBoxNumber + Game.LevelIndex;
 
         for (int i = 0; i < BlockBoxCount; i++)
         {

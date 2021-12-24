@@ -1,4 +1,3 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -15,7 +14,6 @@ public class Player : MonoBehaviour
     public AudioClip WinAudio;
 
     private SnakeScript SnakeScript;
-    private int lastLength;
 
     void Start()
     {
