@@ -2789,11 +2789,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1425943067}
   - {fileID: 1834183556}
   - {fileID: 2113330434}
   - {fileID: 1346484872}
   - {fileID: 1973194661}
-  - {fileID: 1425943067}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2896,7 +2896,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 303110205712768951, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 303110205712768951, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3017,7 +3017,7 @@ Transform:
   - {fileID: 737002903}
   - {fileID: 1547203158}
   m_Father: {fileID: 1172536641}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1499031935
 PrefabInstance:
@@ -3036,7 +3036,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 303110205712768951, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 303110205712768951, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3792,7 +3792,7 @@ Transform:
   - {fileID: 445340294}
   - {fileID: 1986350058}
   m_Father: {fileID: 1172536641}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1866531870
 GameObject:
@@ -3890,7 +3890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 303110205712768951, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 303110205712768951, guid: fb50b1d3344f1c443ad537f72e343e45, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3982,7 +3982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 737002903}
-  Sensivity: 0.01
+  Sensivity: 0.5
   LeftCornerTransform: {fileID: 680219608}
   RightCornerTransform: {fileID: 255815300}
 --- !u!4 &1973194661 stripped
