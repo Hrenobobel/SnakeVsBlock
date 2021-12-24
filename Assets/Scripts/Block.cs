@@ -53,7 +53,6 @@ public class Block : MonoBehaviour
 
         if (BlockValue == 0)
         {
-            //this.gameObject.SetActive(false);
             Destroy(this.gameObject);
         }
         UpdateValue();
