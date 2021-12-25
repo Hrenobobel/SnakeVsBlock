@@ -8,19 +8,26 @@ public class Game : MonoBehaviour
     public GameObject LoseMenu;
     public GameObject GameUI;
     public int MaxLevel;
+    public Player Player;
 
-    public enum State
+    private void Start()
     {
-        Play,
-        Win,
-        Lose,
+        StartMenu.SetActive(true);
+        GameUI.SetActive(false);
+        LoseMenu.SetActive(false);
+        WinMenu.SetActive(false);
     }
-    public State CurrentState { get; private set; }
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+            OnPlayerStart();
+    }
 
     public void OnPlayerStart()
     {
         StartMenu.SetActive(false);
         GameUI.SetActive(true);
+        Player.Play();
     }
     public void OnPlayerDie()
     {
