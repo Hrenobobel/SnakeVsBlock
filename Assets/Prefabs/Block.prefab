@@ -821,7 +821,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.5, y: 4, z: 1}
+  m_Size: {x: 3.9, y: 4, z: 1}
   m_Center: {x: 1.75, y: 1.5, z: -0.5}
 --- !u!54 &2921137627089511202
 Rigidbody:
@@ -852,7 +852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ValueText: {fileID: 8277485835955693100}
-  Value: 0
+  BlockValue: 0
   minValue: 1
   maxValue: 20
   bottom: {fileID: 1876413834113062521}
