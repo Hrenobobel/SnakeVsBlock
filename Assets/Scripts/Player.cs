@@ -17,10 +17,11 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        moveUp.Stop();
         SnakeScript = GetComponent<SnakeScript>();
         UpdateLengthText();
         for (int i = 0; i < PlayerLength; i++)
-            SnakeScript.LengthUp();
+            SnakeScript.LengthUp();        
     }
 
     private void UpdateLengthText()
